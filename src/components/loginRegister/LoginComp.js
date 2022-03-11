@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./RegisterComp.css";
 
-const Posturl = "https://loginapiedu.herokuapp.com/api/auth/login";
+const Posturl = "https://loginapidev.herokuapp.com/api/auth/login";
 class LoginComp extends Component {
   constructor(props) {
     super(props);
@@ -65,7 +65,7 @@ class LoginComp extends Component {
                   Password
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   id="password"
                   name="password"
                   value={this.state.password}
