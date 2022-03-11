@@ -4,7 +4,7 @@ import Footer from "../Footer/Footer";
 import GetInfo from "./GetInfo";
 import "./Details.css";
 
-const url = "https://groceteriaapi.herokuapp.com/products?id=";
+const url = "https://apigroceteria.herokuapp.com/products?id=";
 
 class Details extends Component {
   constructor(props) {

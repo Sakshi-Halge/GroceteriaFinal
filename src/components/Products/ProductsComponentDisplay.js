@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 import "./ProductsComponent.css";
 import Pagination from "../Pagination/Pagination";
 
-const carturl = "https://groceteriaapi.herokuapp.com/placecart";
+const carturl = "https://apigroceteria.herokuapp.com/placecart";
 
-const viewcart = "https://groceteriaapi.herokuapp.com/viewcart/";
+const viewcart = "https://apigroceteria.herokuapp.com/viewcart/";
 
 class ProductsComponentDisplay extends Component {
   constructor(props) {
@@ -76,97 +76,105 @@ class ProductsComponentDisplay extends Component {
   };
 
   renderProducts = () => {
-    if (this.props.productList) {
-      return this.props.productList.map((item, index) => {
-        if (this.state.Indexes.indexOf(index) > -1) {
-          let actPrice = ((100 * item.price) / (100 - item.offer)).toFixed(2);
-          return (
-            <div className="result-box" key={item.id}>
-              {item.offer > 0 ? (
-                <div className="result-guide">
-                  <h3>{item.offer}%</h3>
-                </div>
-              ) : (
-                ""
-              )}
-
-              <div className="item-img-pro">
-                <img src={item.item_thumb} alt="productimg" />
-              </div>
-              <div className="brand-detail">
-                <div className="brand-title">
-                  <h4>{item.name}</h4>
-                </div>
-                <div className="pricing-box">
-                  <div className="product-val">
-                    <h4>₹ {item.price}</h4>
-                    <h5>
-                      M.R.P <del>₹{actPrice}</del>
-                    </h5>
+    if (this.props.hasdata) {
+      if (this.props.productList) {
+        return this.props.productList.map((item, index) => {
+          if (this.state.Indexes.indexOf(index) > -1) {
+            let actPrice = ((100 * item.price) / (100 - item.offer)).toFixed(2);
+            return (
+              <div className="result-box" key={item.id}>
+                {item.offer > 0 ? (
+                  <div className="result-guide">
+                    <h3>{item.offer}%</h3>
                   </div>
-                  <div className="customer-rating">
-                    <div className="rating-images">
-                      <img
-                        src="https://img.icons8.com/color/48/000000/star--v1.png"
-                        className="star-icon"
-                        alt="star"
-                      />
-                      <img
-                        src="https://img.icons8.com/color/48/000000/star--v1.png"
-                        className="star-icon"
-                        alt="star"
-                      />
-                      <img
-                        src="https://img.icons8.com/color/48/000000/star--v1.png"
-                        className="star-icon"
-                        alt="star"
-                      />
-                      <img
-                        src="https://img.icons8.com/color/48/000000/star--v1.png"
-                        className="star-icon"
-                        alt="star"
-                      />
-                      <img
-                        src="https://img.icons8.com/color/48/000000/star--v1.png"
-                        className="star-icon"
-                        alt="star"
-                      />
+                ) : (
+                  ""
+                )}
+
+                <div className="item-img-pro">
+                  <img src={item.item_thumb} alt="productimg" />
+                </div>
+                <div className="brand-detail">
+                  <div className="brand-title">
+                    <h4>{item.name}</h4>
+                  </div>
+                  <div className="pricing-box">
+                    <div className="product-val">
+                      <h4>₹ {item.price}</h4>
+                      <h5>
+                        M.R.P <del>₹{actPrice}</del>
+                      </h5>
                     </div>
+                    <div className="customer-rating">
+                      <div className="rating-images">
+                        <img
+                          src="https://img.icons8.com/color/48/000000/star--v1.png"
+                          className="star-icon"
+                          alt="star"
+                        />
+                        <img
+                          src="https://img.icons8.com/color/48/000000/star--v1.png"
+                          className="star-icon"
+                          alt="star"
+                        />
+                        <img
+                          src="https://img.icons8.com/color/48/000000/star--v1.png"
+                          className="star-icon"
+                          alt="star"
+                        />
+                        <img
+                          src="https://img.icons8.com/color/48/000000/star--v1.png"
+                          className="star-icon"
+                          alt="star"
+                        />
+                        <img
+                          src="https://img.icons8.com/color/48/000000/star--v1.png"
+                          className="star-icon"
+                          alt="star"
+                        />
+                      </div>
 
-                    <h5>{item.rating} customer ratings</h5>
-                  </div>
-                  <div className="save-val">
-                    <h5>
-                      You Save:{" "}
-                      <span className="save-val-mrp">
-                        ₹{(actPrice - item.price).toFixed(2)} {item.offer}% off
-                      </span>{" "}
-                    </h5>
+                      <h5>{item.rating} customer ratings</h5>
+                    </div>
+                    <div className="save-val">
+                      <h5>
+                        You Save:{" "}
+                        <span className="save-val-mrp">
+                          ₹{(actPrice - item.price).toFixed(2)} {item.offer}%
+                          off
+                        </span>{" "}
+                      </h5>
+                    </div>
                   </div>
                 </div>
+                <div className="shop-btns">
+                  <Link to={`/details/${item.id}`}>
+                    <button className="buy-now">Buy Now</button>
+                  </Link>
+                  <button
+                    className="add-cart"
+                    onClick={() => {
+                      this.addToCart(
+                        item.id,
+                        item.name,
+                        item.price,
+                        item.item_thumb
+                      );
+                    }}
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </div>
-              <div className="shop-btns">
-                <Link to={`/details/${item.id}`}>
-                  <button className="buy-now">Buy Now</button>
-                </Link>
-                <button
-                  className="add-cart"
-                  onClick={() => {
-                    this.addToCart(
-                      item.id,
-                      item.name,
-                      item.price,
-                      item.item_thumb
-                    );
-                  }}
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-          );
-        }
-      });
+            );
+          }
+        });
+      }
+    }
+    else{
+      return(
+        <h1>No results found</h1>
+      )
     }
   };
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-const url =
-  "https://groceteriaapi.herokuapp.com/product?subId=";
+const url = "https://apigroceteria.herokuapp.com/product?subId=";
 
 class Discount extends Component {
 
@@ -12,6 +11,11 @@ class Discount extends Component {
         .then((data) => {
             this.props.setdataByFilter(data);
             this.props.setFilterSearchBox()
+            if (data.length > 0) {
+              this.props.checkData(true);
+            } else {
+              this.props.checkData(false);
+            }
         })
     }
     render() { 

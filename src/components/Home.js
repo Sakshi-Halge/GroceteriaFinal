@@ -16,7 +16,7 @@ const Home = () => {
     <>
       <BrowserRouter>
         <Route exact path="/" component={Main} />
-        <Route path="/listing/:catId" component={Listing} />
+        <Route exact path="/listing/:catId" component={Listing} />
         <Route path="/products/:productId" component={ProductsComponentApi} />
         <Route path="/register" component={RegisterComp} />
         <Route path="/viewOrder" component={ViewOrdersApi} />

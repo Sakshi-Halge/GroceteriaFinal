@@ -5,7 +5,7 @@ import Footer from "../Footer/Footer";
 import ViewOrdersDisplay from "./ViewOrdersDisplay";
 import "./ViewOrders.css";
 
-const filterurl = "https://groceteriaapi.herokuapp.com/viewOrders/";
+const filterurl = "https://apigroceteria.herokuapp.com/viewOrders/";
 
 const limit = 4;
 let emailid = "kirti@gmail.com";

@@ -5,10 +5,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Main.css";
 
-const url = "https://groceteriaapi.herokuapp.com/product?lprice=90&hprice=99";
-const carturl = "https://groceteriaapi.herokuapp.com/placecart";
+const url = "https://apigroceteria.herokuapp.com/product?lprice=90&hprice=99";
+const carturl = "https://apigroceteria.herokuapp.com/placecart";
 
-const viewcart = "https://groceteriaapi.herokuapp.com/viewcart/";
+const viewcart = "https://apigroceteria.herokuapp.com/viewcart/";
 
 const NextArrowBtn = (props) => {
   const { className, onClick } = props;

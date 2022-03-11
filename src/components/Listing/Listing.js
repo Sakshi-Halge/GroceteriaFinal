@@ -4,7 +4,7 @@ import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import "./Listing.css";
 
-const url = "https://groceteriaapi.herokuapp.com/sub_category/";
+const url = "https://apigroceteria.herokuapp.com/sub_category/";
 
 class Listing extends Component {
   constructor() {
@@ -38,24 +38,37 @@ class Listing extends Component {
   render() {
     return (
       <>
-      <Header />
+        <Header />
         <div className="listing-box">
           <h1 className="listing-title">Shop by Category</h1>
           <div className="listing-items">{this.renderCategory()}</div>
         </div>
-      <Footer />
+        <Footer />
       </>
     );
   }
 
-  componentDidMount() {
-    const categoryId = this.props.match.params.catId;
+  componentWillReceiveProps(nextProps) {
+    const categoryId = nextProps.match.params.catId;
+    console.log("catId", categoryId);
     this.setState({ catId: categoryId }, () => {
       fetch(`${url}${categoryId}`)
         .then((res) => res.json())
         .then((data) => {
           this.setState({ categoryList: data });
-          console.log(data)
+          console.log(data);
+        });
+    });
+  }
+  componentDidMount() {
+    const categoryId = this.props.match.params.catId;
+    console.log("catId", categoryId);
+    this.setState({ catId: categoryId }, () => {
+      fetch(`${url}${categoryId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          this.setState({ categoryList: data });
+          console.log(data);
         });
     });
   }

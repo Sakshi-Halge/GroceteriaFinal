@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import {withRouter} from 'react-router-dom'
 import "./GetInfo.css";
 
-const Posturl = "https://groceteriaapi.herokuapp.com/placeorder";
-const viewcart = "https://groceteriaapi.herokuapp.com/viewcart/";
-const deleteApi = "https://groceteriaapi.herokuapp.com/deletecart/";
+const Posturl = "https://apigroceteria.herokuapp.com/placeorder";
+const viewcart = "https://apigroceteria.herokuapp.com/viewcart/";
+const deleteApi = "https://apigroceteria.herokuapp.com/deletecart/";
 
 class GetInfo extends Component {
   constructor(props) {

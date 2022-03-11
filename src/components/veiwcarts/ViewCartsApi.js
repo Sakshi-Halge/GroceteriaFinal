@@ -5,8 +5,8 @@ import Footer from "../Footer/Footer";
 import ViewCartsDisplay from './ViewCartsDisplay'
 import "./ViewCarts.css";
 
-const filterurl = "https://groceteriaapi.herokuapp.com/viewcart/";
-const deleteApi = "https://groceteriaapi.herokuapp.com/deletecart/";
+const filterurl = "https://apigroceteria.herokuapp.com/viewcart/";
+const deleteApi = "https://apigroceteria.herokuapp.com/deletecart/";
 
 const limit = 4;
 let emailid ;
